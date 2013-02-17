@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="38004Nuology.ShopNowDemo" Publisher="CN=4A9A8C64-B7CA-47DC-B455-CD0502DF2B2C" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>ShopNowDemo</DisplayName>
+    <PublisherDisplayName>Nuology</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShopNow.App">
+      <VisualElements DisplayName="ShopNowDemo" Logo="Assets\Logo.png" SmallLogo="Assets\small.png" Description="ShopNow" ForegroundText="dark" BackgroundColor="#E5E1DC" ToastCapable="true">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\wide.png" />
+        <SplashScreen Image="Assets\Splash.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
