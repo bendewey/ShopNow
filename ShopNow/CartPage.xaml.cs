@@ -57,16 +57,22 @@ namespace ShopNow
             SubmitOrder.IsEnabled = false;
 
             Exception exception = null;
+            bool submitted = false;
             try
             {
                 var repository = ServiceLocator.Get<CartRepository>();
 
                 var user = await Authenticate();
-                Cart.UserId = user.UserId;
-                Cart.HardwareId = HardwareIdentificationHelpers.GetHardwareId();
-                await repository.SubmitCart(Cart);
+                if (user != null)
+                {
 
-                Cart = new Cart();
+                    Cart.UserId = user.UserId;
+                    Cart.HardwareId = HardwareIdentificationHelpers.GetHardwareId();
+                    await repository.SubmitCart(Cart);
+
+                    Cart = new Cart();
+                    submitted = true;
+                }
 
             }
             catch (Exception ex)
@@ -78,14 +84,14 @@ namespace ShopNow
             {
                 var dialog = new MessageDialog(exception.Message);
                 await dialog.ShowAsync();
-
-                ProcessingRing.IsActive = false;
-                SubmitOrder.IsEnabled = true;
             }
-            else
+            else if (submitted)
             {
                 Frame.Navigate(typeof(GroupedItemsPage), "AllCategories");
             }
+
+            ProcessingRing.IsActive = false;
+            SubmitOrder.IsEnabled = true;
         }
 
         private async Task<MobileServiceUser> Authenticate()
@@ -110,10 +116,13 @@ namespace ShopNow
 
                 var dialog = new MessageDialog(message);
                 dialog.Commands.Add(new UICommand("OK"));
-                await dialog.ShowAsync();
+                dialog.Commands.Add(new UICommand("Cancel"));
+                var result = await dialog.ShowAsync();
+                if (result.Label == "Cancel")
+                {
+                    return null;
+                }
             }
-
-
         }
     }
 }

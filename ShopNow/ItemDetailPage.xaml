@@ -96,7 +96,7 @@
 								<Rectangle Fill="White" />
 								<Image Stretch="Uniform" Source="{Binding Image}" AutomationProperties.Name="{Binding Name}"/>
 
-								<StackPanel Grid.Column="2">
+								<StackPanel Grid.Column="2" Margin="20,0,0,0">
 									<TextBlock Style="{StaticResource SubheaderTextStyle}">
 										<TextBlock.Inlines>
 											<Run Text="{Binding Name}"/>

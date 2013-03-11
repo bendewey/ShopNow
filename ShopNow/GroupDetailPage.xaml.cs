@@ -43,7 +43,7 @@ namespace ShopNow
             this.DefaultViewModel["Category"] = category;
             this.DefaultViewModel["Products"] = category.Products;
 
-            ToggleAppBarButton(!SecondaryTile.Exists(category.TileId));
+            ToggleAppBarButtonStyle(!SecondaryTile.Exists(category.TileId));
 
         }
 
@@ -61,7 +61,7 @@ namespace ShopNow
             this.Frame.Navigate(typeof(ItemDetailPage), itemId);
         }
 
-        private void ToggleAppBarButton(bool showPinButton)
+        private void ToggleAppBarButtonStyle(bool showPinButton)
         {
             if (pinToAppBar != null)
             {
@@ -71,10 +71,7 @@ namespace ShopNow
 
         private async void PinCategory_OnClick(object sender, RoutedEventArgs e)
         {
-            var element = ((FrameworkElement) sender);
-            Windows.UI.Xaml.Media.GeneralTransform buttonTransform = element.TransformToVisual(null);
-            var point = buttonTransform.TransformPoint(new Point());
-            var rect = new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
+            var rect = GetPositionOfElement(sender as FrameworkElement);
             var category = (Category) DefaultViewModel["Category"];
 
             var creator = ServiceLocator.Get<SecondaryTileCreator>();
@@ -82,14 +79,25 @@ namespace ShopNow
             {
                 var wasRemoved = await creator.RemoveSecondaryTile(category, rect);
 
-                ToggleAppBarButton(wasRemoved);
+                ToggleAppBarButtonStyle(wasRemoved);
             }
             else
             {
                 var wasAdded = await creator.CreateSecondaryTile(category, rect);
 
-                ToggleAppBarButton(!wasAdded);
+                ToggleAppBarButtonStyle(!wasAdded);
             }
+        }
+
+        private static Rect GetPositionOfElement(FrameworkElement element)
+        {
+            if (element == null)
+                return Rect.Empty;
+
+            Windows.UI.Xaml.Media.GeneralTransform buttonTransform = element.TransformToVisual(null);
+            var point = buttonTransform.TransformPoint(new Point());
+            var rect = new Rect(point, new Size(element.ActualWidth, element.ActualHeight));
+            return rect;
         }
     }
 }

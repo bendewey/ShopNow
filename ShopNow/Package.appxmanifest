@@ -16,7 +16,7 @@
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ShopNow.App">
       <VisualElements DisplayName="ShopNowDemo" Logo="Assets\Logo.png" SmallLogo="Assets\small.png" Description="ShopNow" ForegroundText="dark" BackgroundColor="#E5E1DC" ToastCapable="true">
-        <DefaultTile ShowName="allLogos" WideLogo="Assets\wide.png" />
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\wide.png" ShortName="ShopNow" />
         <SplashScreen Image="Assets\Splash.png" />
       </VisualElements>
     </Application>

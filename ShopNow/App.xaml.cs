@@ -107,26 +107,19 @@ namespace ShopNow
             {
                 var decoder = new WwwFormUrlDecoder(args.Arguments);
 
-
                 var category = decoder.Where(v => v.Name == "category").Select(v => v.Value).FirstOrDefault();
                 if (!string.IsNullOrEmpty(category))
                 {
-                    // if Arguments exists then its launched from a secondary tile.
-                    if (!rootFrame.Navigate(typeof(GroupDetailPage), category))
-                    {
-                        throw new Exception("Failed to create initial page");
-                    }
+                    // if category exists then its launched from a secondary tile.
+                    rootFrame.Navigate(typeof (GroupDetailPage), category);
                 }
 
                 var cartParam = decoder.Where(v => v.Name == "cartId").Select(v => v.Value).FirstOrDefault();
                 long cartId;
                 if (long.TryParse(cartParam, out cartId))
                 {
-                    // if Arguments exists then its launched from a secondary tile.
-                    if (!rootFrame.Navigate(typeof(CartPage), cartId))
-                    {
-                        throw new Exception("Failed to create initial page");
-                    }
+                    // if cartId exists then its launched from a toast.
+                    rootFrame.Navigate(typeof (CartPage), cartId);
                 }
             }
             // Ensure the current window is active
