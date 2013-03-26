@@ -33,8 +33,12 @@ namespace ShopNow.Services
         {
             var xml = TileUpdateManager.GetTemplateContent(TileTemplateType.TileSquareText01);
 
+            var x = xml.GetXml();
+
             var text = xml.GetElementsByTagName("text").First();
             text.InnerText = string.Format("{0} Item(s)", args.Cart.ItemCount);
+
+            x = xml.GetXml();
 
             var notification = new TileNotification(xml);
 
