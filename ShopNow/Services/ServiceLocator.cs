@@ -14,6 +14,7 @@ namespace ShopNow.Services
             _singletons.Add(typeof(IEventAggregator), new EventAggregator());
             _singletons.Add(typeof(PushNotificationRegistrationService), new PushNotificationRegistrationService());
             _singletons.Add(typeof(TileUpdaterService), new TileUpdaterService());
+            _singletons.Add(typeof(ToastNotificationService), new ToastNotificationService());
         }
 
         /// <summary>

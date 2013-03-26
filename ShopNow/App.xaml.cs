@@ -32,6 +32,8 @@ namespace ShopNow
 
             var tileUpdaterService = ServiceLocator.Get<TileUpdaterService>();
             tileUpdaterService.Initialize();
+            var toastService = ServiceLocator.Get<ToastNotificationService>();
+            toastService.Initialize();
         }
 
         /// <summary>

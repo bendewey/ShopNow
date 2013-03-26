@@ -5,6 +5,7 @@ using Microsoft.WindowsAzure.MobileServices;
 using ShopNow.Common;
 using ShopNow.DataModel;
 using ShopNow.DataModel.Repository;
+using ShopNow.Events;
 using ShopNow.Services;
 using Windows.Networking.PushNotifications;
 using Windows.UI.Popups;
@@ -69,6 +70,9 @@ namespace ShopNow
                     Cart.UserId = user.UserId;
                     Cart.HardwareId = HardwareIdentificationHelpers.GetHardwareId();
                     await repository.SubmitCart(Cart);
+
+                    var eventAggregator = ServiceLocator.Get<IEventAggregator>();
+                    eventAggregator.Publish(new OrderPlacedEvent(Cart));
 
                     Cart = new Cart();
                     submitted = true;

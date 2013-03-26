@@ -136,6 +136,7 @@
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\OrderPlacedEvent.cs" />
     <Compile Include="ExtendedSplash.xaml.cs">
       <DependentUpon>ExtendedSplash.xaml</DependentUpon>
     </Compile>
@@ -161,6 +162,7 @@
     <Compile Include="Services\SecondaryTileCreator.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Services\TileUpdaterService.cs" />
+    <Compile Include="Services\ToastNotificationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
