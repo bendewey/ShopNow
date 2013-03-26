@@ -9,7 +9,7 @@
 
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
         <Image Source="Images/loading_filled.png" Margin="340,40,40,40"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="ShopNow" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="80" Foreground="#FF555555" Margin="0,0,498,200"/>
-        <ProgressRing IsActive="True" Height="100" Width="100" Margin="0,100,500,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF555555" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="ShopNow" VerticalAlignment="Center" FontFamily="Segoe UI Light" FontSize="60" Foreground="#FF555555" Margin="0,0,498,150"/>
+        <ProgressRing IsActive="True" Height="60" Width="60" Margin="0,50,500,0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF555555" />
     </Grid>
 </Page>
