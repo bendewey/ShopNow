@@ -27,6 +27,15 @@ namespace ShopNow.Services
         {
             _itemAddedToCart = ItemAddedToCart;
             _eventAggregator.Subscribe(_itemAddedToCart);
+
+            SetupPeriodicTileForCoupon();
+        }
+
+        private void SetupPeriodicTileForCoupon()
+        {
+            const string xmlUrl = "http://shopnow-services.azurewebsites.net/Xml";
+            var updater = TileUpdateManager.CreateTileUpdaterForApplication();
+            updater.StartPeriodicUpdate(new Uri(xmlUrl), DateTimeOffset.Now.AddSeconds(30), PeriodicUpdateRecurrence.HalfHour);
         }
 
         public void ItemAddedToCart(CartItemAddedEvent args)
