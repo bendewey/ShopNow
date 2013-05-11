@@ -1,0 +1,3 @@
+[submodule "ShopNow-Services"]
+	path = ShopNow-Services
+	url = git://github.com/bendewey/ShopNow-Services.git
