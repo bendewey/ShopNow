@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 
 namespace ShopNow.DataModel
 {
-    [DataContract]
     public class Catalog
     {
         public Catalog(List<Product> products)
@@ -12,7 +11,6 @@ namespace ShopNow.DataModel
             Products = products;
         }
 
-        [DataMember]
         public List<Product> Products { get; set; }
 
         public List<Category> GetProductsForCategory(string categoryName)

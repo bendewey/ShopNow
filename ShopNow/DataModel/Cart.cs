@@ -7,7 +7,6 @@ using ShopNow.Data;
 
 namespace ShopNow.DataModel
 {
-    [DataContract]
     public class Cart : IIdentifiable
     {
         public Cart()
@@ -15,20 +14,14 @@ namespace ShopNow.DataModel
             Items = new List<CartItem>();
         }
 
-        [DataMember]
         public long Id { get; set; }
 
-        [DataMember]
         public DateTimeOffset OrderDate { get; set; }
 
-        [DataMember]
         public string UserId { get; set; }
 
-        [DataMember]
         public string HardwareId { get; set; }
 
-        [DataMember]
-        [DataMemberJsonConverter(ConverterType = typeof(CartItemArrayConverter))]
         public List<CartItem> Items { get; set; }
 
         public double Subtotal
