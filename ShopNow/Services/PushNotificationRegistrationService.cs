@@ -1,7 +1,5 @@
 ﻿using System;
 using ShopNow.Common;
-using ShopNow.DataModel;
-using Microsoft.WindowsAzure.MobileServices;
 using ShopNow.DataModel.Repository;
 using Windows.Networking.PushNotifications;
 using Windows.Storage;
